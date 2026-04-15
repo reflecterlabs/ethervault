@@ -111,6 +111,151 @@
 				color: var(--primary);
 			}
 
+			.menu-toggle {
+				display: none;
+				flex-direction: column;
+				gap: 0.42rem;
+				background: none;
+				border: none;
+				cursor: pointer;
+				padding: 0.5rem;
+				z-index: 30;
+			}
+
+			.menu-toggle span {
+				width: 1.6rem;
+				height: 0.18rem;
+				background: var(--muted);
+				border-radius: 999px;
+				transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+				transform-origin: center;
+			}
+
+			.menu-toggle.active span:nth-child(1) {
+				transform: rotate(45deg) translateY(11px);
+			}
+
+			.menu-toggle.active span:nth-child(2) {
+				opacity: 0;
+				transform: translateX(-10px);
+			}
+
+			.menu-toggle.active span:nth-child(3) {
+				transform: rotate(-45deg) translateY(-11px);
+			}
+
+			@media (max-width: 768px) {
+				.menu-toggle {
+					display: flex;
+				}
+
+				nav {
+					flex-wrap: nowrap;
+					position: relative;
+				}
+
+				.nav-links {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
+					flex-direction: column;
+					gap: 0;
+					padding: 1rem;
+					background: rgba(8, 5, 12, 0.95);
+					backdrop-filter: blur(10px);
+					border-bottom: 1px solid rgba(255, 95, 166, 0.22);
+					max-height: 0;
+					overflow: hidden;
+					opacity: 0;
+					transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+					transform: translateY(-10px);
+					pointer-events: none;
+				}
+
+				.nav-links.active {
+					max-height: 300px;
+					opacity: 1;
+					transform: translateY(0);
+					pointer-events: auto;
+				}
+
+				.nav-links a {
+					padding: 0.85rem 0;
+					border-bottom: 1px solid rgba(255, 95, 166, 0.12);
+					font-size: 1rem;
+				}
+
+				.nav-links a:last-child {
+					border-bottom: none;
+				}
+
+				.brand img {
+					height: 60px;
+				}
+
+				header .container {
+					padding: 0 1rem;
+				}
+
+				.container {
+					padding: 0 1rem;
+				}
+
+				.hero {
+					padding: 3rem 0 2rem;
+				}
+
+				.metrics {
+					grid-template-columns: 1fr;
+					gap: 0.6rem;
+				}
+
+				.thesis-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.architecture {
+					grid-template-columns: 1fr;
+				}
+
+				h1 {
+					font-size: clamp(1.6rem, 6vw, 2.8rem);
+				}
+
+				.section-title {
+					font-size: clamp(1.2rem, 4vw, 1.8rem);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.brand img {
+					height: 48px;
+				}
+
+				h1 {
+					font-size: clamp(1.4rem, 5.5vw, 2.4rem);
+				}
+
+				.hero-sub {
+					font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+				}
+
+				.section-title {
+					font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+				}
+
+				.card {
+					padding: 1.1rem;
+				}
+
+				.thesis-number {
+					width: 2.8rem;
+					height: 2.8rem;
+					font-size: 1rem;
+				}
+			}
+
 			.hero {
 				padding: 5.2rem 0 3.4rem;
 			}
@@ -634,7 +779,6 @@
 				<nav>
 					<a href="#" class="brand">
 						<img src="/EtherVault_01.png" alt="EtherVap" />
-
 					</a>
 					<div class="nav-links">
 						<a href="#dependency">Dependency Reality</a>
@@ -642,6 +786,11 @@
 						<a href="#solution">Resilience Layer</a>
 						<a href="#architecture">On Chain Architecture</a>
 					</div>
+					<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
 				</nav>
 			</div>
 		</header>
@@ -848,5 +997,29 @@
 				</div>
 			</div>
 		</footer>
+
+		<script>
+			const menuToggle = document.getElementById('menuToggle');
+			const navLinks = document.querySelector('.nav-links');
+
+			menuToggle.addEventListener('click', () => {
+				menuToggle.classList.toggle('active');
+				navLinks.classList.toggle('active');
+			});
+
+			// Cerrar menú al clickear un link
+			navLinks.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+					menuToggle.classList.remove('active');
+					navLinks.classList.remove('active');
+				});
+			});
+
+			// Cerrar menú al hacer scroll
+			window.addEventListener('scroll', () => {
+				menuToggle.classList.remove('active');
+				navLinks.classList.remove('active');
+			});
+		</script>
 	</body>
 </html>
