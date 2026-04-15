@@ -14,7 +14,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'ethervault-basic' }}
+      PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT || 'ethervault-linked' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
