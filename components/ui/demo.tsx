@@ -1,4 +1,5 @@
 import { Component } from './etheral-shadow';
+import { BeamsBackground } from './beams-background';
 
 export const DemoOne = () => {
   return (
@@ -15,4 +16,8 @@ export const DemoOne = () => {
       </div>
     </div>
   );
+};
+
+export const BeamsBackgroundDemo = () => {
+  return <BeamsBackground />;
 };

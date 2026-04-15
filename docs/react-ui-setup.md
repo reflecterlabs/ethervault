@@ -2,21 +2,38 @@
 
 This repository is currently Worker-first. It does not include a full React app runtime by default.
 
-The component was integrated at:
+The components are integrated at:
 - `components/ui/etheral-shadow.tsx`
 - `components/ui/demo.tsx`
+- `components/ui/beams-background.tsx`
 
 ## Why `components/ui` matters
 
 shadcn/ui generators and team conventions expect reusable primitives in `components/ui`.
 Keeping this path makes generated components predictable, easier to import, and easier to maintain.
 
+## Default paths in this repository
+
+- Components path: `components/ui`
+- Styles path in current Worker landing: `public/index.html` (inline CSS)
+
+This repo is not a full React app by default, so there is no global Tailwind stylesheet yet.
+
+## Why keeping `components/ui` is important
+
+`components/ui` aligns with shadcn conventions and avoids import drift. If teams place reusable UI in random folders, generated component updates and shared imports become inconsistent.
+
 ## Required dependencies installed
 
 - `react`
 - `react-dom`
 - `framer-motion`
+- `motion`
 - `lucide-react`
+
+The `BeamsBackground` component already uses the active hero palette from `public/index.html`:
+- Base gradient: `#120722` -> `#1f0f39` -> `#2a1450`
+- Accent glow: pink-magenta (`rgba(255, 95, 166, ...)`)
 
 ## Option A: Add React app in this repo with Vite + Tailwind + shadcn
 
