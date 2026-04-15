@@ -85,60 +85,107 @@
 			}
 
 			/* Hero Section */
+			.hero-wrapper {
+				position: relative;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				overflow: hidden;
+			}
+
+			/* Etheral Shadow background layer */
+			.etheral-shadow {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+
+			.etheral-shadow__inner {
+				position: absolute;
+				inset: -100px;
+				filter: url(#etheral-filter) blur(4px);
+			}
+
+			.etheral-shadow__color {
+				background-color: rgba(236, 72, 153, 0.82);
+				-webkit-mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
+				mask-image: url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png');
+				-webkit-mask-size: cover;
+				mask-size: cover;
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-position: center;
+				mask-position: center;
+				width: 100%;
+				height: 100%;
+			}
+
+			.etheral-shadow__noise {
+				position: absolute;
+				inset: 0;
+				background-image: url('https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png');
+				background-size: 240px;
+				background-repeat: repeat;
+				opacity: 0.35;
+				pointer-events: none;
+			}
+
+			/* Radial dark vignette to keep text legible */
+			.etheral-shadow__vignette {
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(15,15,15,0.72) 100%);
+				pointer-events: none;
+			}
+
 			.hero {
+				position: relative;
+				z-index: 1;
 				max-width: 1200px;
+				width: 100%;
 				margin: 0 auto;
-				padding: 6rem 2rem;
+				padding: 8rem 2rem 6rem;
 				text-align: center;
 			}
 
-			.hero-logo {
-				width: 160px;
-				height: 160px;
-				margin: 0 auto 2rem;
-				background: radial-gradient(circle, var(--secondary) 0%, var(--primary) 100%);
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 4rem;
-				opacity: 0.1;
-			}
-
 			.hero img {
-				max-width: 200px;
+				max-width: 180px;
 				width: 100%;
 				margin: 0 auto 2rem;
 				display: block;
+				filter: drop-shadow(0 0 32px rgba(236,72,153,0.45));
 			}
 
 			.hero h1 {
-				font-size: clamp(2.5rem, 8vw, 4rem);
+				font-size: clamp(2.5rem, 8vw, 4.5rem);
 				font-weight: 800;
 				letter-spacing: -0.03em;
-				line-height: 1.2;
+				line-height: 1.15;
 				margin-bottom: 1rem;
-				background: linear-gradient(135deg, var(--primary), var(--secondary));
+				background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 55%, var(--primary) 100%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-clip: text;
+				text-shadow: none;
 			}
 
 			.hero .subtitle {
-				font-size: clamp(1.1rem, 3vw, 1.5rem);
-				color: var(--text-muted);
-				margin-bottom: 2rem;
+				font-size: clamp(1.1rem, 3vw, 1.4rem);
+				color: rgba(255,255,255,0.8);
+				margin-bottom: 1.5rem;
 				max-width: 700px;
 				margin-left: auto;
 				margin-right: auto;
 			}
 
 			.hero .description {
-				font-size: 1.1rem;
-				color: var(--text-muted);
-				max-width: 700px;
+				font-size: 1.05rem;
+				color: rgba(255,255,255,0.65);
+				max-width: 640px;
 				margin: 0 auto 3rem;
-				line-height: 1.8;
+				line-height: 1.85;
 			}
 
 			.cta-buttons {
@@ -403,20 +450,72 @@
 			</nav>
 		</header>
 
-		<!-- Hero Section -->
-		<section class="hero">
-			<h1>Liquid Market for AI Inference Capacity</h1>
-			<p class="subtitle">Lock in tomorrow's LLM capacity at today's prices</p>
-			<p class="description">
-				EtherVault is a treasury-backed protocol for trading future AI inference
-				capacity. Enterprises secure compute at predictable prices. Providers
-				monetize excess capacity. Uniswap v4 powers the market.
-			</p>
-			<div class="cta-buttons">
-				<button class="btn btn-primary">View Litepaper</button>
-				<button class="btn btn-secondary">Explore Protocol</button>
+		<!-- Hero Section with Etheral Shadow -->
+		<div class="hero-wrapper">
+			<!-- Etheral Shadow animated background -->
+			<div class="etheral-shadow" aria-hidden="true">
+				<!-- Hidden SVG filter -->
+				<svg style="position:absolute;width:0;height:0;overflow:hidden;" focusable="false">
+					<defs>
+						<filter id="etheral-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+							<feTurbulence
+								result="undulation"
+								numOctaves="2"
+								baseFrequency="0.0005,0.002"
+								seed="0"
+								type="turbulence"
+							/>
+							<feColorMatrix
+								id="etheral-hue"
+								in="undulation"
+								type="hueRotate"
+								values="180"
+							/>
+							<feColorMatrix
+								in="dist"
+								result="circulation"
+								type="matrix"
+								values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"
+							/>
+							<feDisplacementMap
+								in="SourceGraphic"
+								in2="circulation"
+								scale="100"
+								result="dist"
+							/>
+							<feDisplacementMap
+								in="dist"
+								in2="undulation"
+								scale="100"
+								result="output"
+							/>
+						</filter>
+					</defs>
+				</svg>
+
+				<div class="etheral-shadow__inner">
+					<div class="etheral-shadow__color"></div>
+				</div>
+				<div class="etheral-shadow__noise"></div>
+				<div class="etheral-shadow__vignette"></div>
 			</div>
-		</section>
+
+			<!-- Hero content -->
+			<section class="hero">
+				<img src="/EtherVault_01.png" alt="EtherVault" />
+				<h1>Liquid Market for AI Inference Capacity</h1>
+				<p class="subtitle">Lock in tomorrow's LLM capacity at today's prices</p>
+				<p class="description">
+					EtherVault is a treasury-backed protocol for trading future AI inference
+					capacity. Enterprises secure compute at predictable prices. Providers
+					monetize excess capacity. Uniswap v4 powers the market.
+				</p>
+				<div class="cta-buttons">
+					<button class="btn btn-primary">View Litepaper</button>
+					<button class="btn btn-secondary">Explore Protocol</button>
+				</div>
+			</section>
+		</div>
 
 		<!-- Value Proposition Section -->
 		<section id="value" class="value-props">
@@ -528,5 +627,26 @@
 				<a href="#">Docs</a> · <a href="#">GitHub</a> · <a href="#">Discord</a>
 			</p>
 		</footer>
+		<!-- Etheral Shadow hue-rotation animation (mirrors framer-motion animate in the original React component) -->
+		<script>
+			(function () {
+				var matrix = document.getElementById('etheral-hue');
+				if (!matrix) return;
+
+				// speed=90 → duration ≈ mapRange(90, 1,100, 1000,50) / 25 ≈ 5.84s per revolution
+				var revolutionMs = 5840;
+				var start = null;
+
+				function tick(ts) {
+					if (!start) start = ts;
+					var elapsed = ts - start;
+					var hue = (elapsed / revolutionMs * 360) % 360;
+					matrix.setAttribute('values', hue.toFixed(2));
+					requestAnimationFrame(tick);
+				}
+
+				requestAnimationFrame(tick);
+			})();
+		</script>
 	</body>
 </html>
