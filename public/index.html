@@ -53,6 +53,34 @@
 				line-height: 1.6;
 				min-height: 100vh;
 				overflow-x: hidden;
+				position: relative;
+			}
+
+			#beams-bg {
+				position: fixed;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: 0;
+				filter: blur(16px);
+			}
+
+			.beams-overlay {
+				position: fixed;
+				inset: 0;
+				pointer-events: none;
+				z-index: 0;
+				background: radial-gradient(circle at 50% 10%, rgba(255, 95, 166, 0.15), transparent 50%);
+				backdrop-filter: blur(42px);
+			}
+
+			header,
+			main,
+			section,
+			footer {
+				position: relative;
+				z-index: 1;
 			}
 
 			.container {
@@ -991,6 +1019,8 @@
 		</style>
 	</head>
 	<body>
+		<canvas id="beams-bg" aria-hidden="true"></canvas>
+		<div class="beams-overlay" aria-hidden="true"></div>
 		<header>
 			<div class="container">
 				<nav>
@@ -1216,6 +1246,117 @@
 		</footer>
 
 		<script>
+			(() => {
+				const canvas = document.getElementById('beams-bg');
+				if (!canvas) return;
+
+				const ctx = canvas.getContext('2d');
+				if (!ctx) return;
+
+				const beams = [];
+				const minimumBeams = 30;
+				let rafId = 0;
+
+				function createBeam(width, height) {
+					const angle = -34 + Math.random() * 8;
+					return {
+						x: Math.random() * width * 1.5 - width * 0.25,
+						y: Math.random() * height * 1.5 - height * 0.25,
+						width: 24 + Math.random() * 56,
+						length: height * 2.4,
+						angle,
+						speed: 0.45 + Math.random() * 1.05,
+						opacity: 0.12 + Math.random() * 0.18,
+						hue: 268 + Math.random() * 62,
+						pulse: Math.random() * Math.PI * 2,
+						pulseSpeed: 0.016 + Math.random() * 0.03,
+					};
+				}
+
+				function resetBeam(beam, index, total) {
+					const width = window.innerWidth;
+					const height = window.innerHeight;
+					const column = index % 3;
+					const spacing = width / 3;
+
+					beam.y = height + 120;
+					beam.x = column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
+					beam.width = 96 + Math.random() * 96;
+					beam.speed = 0.4 + Math.random() * 0.4;
+					beam.hue = 268 + (index * 62) / total;
+					beam.opacity = 0.18 + Math.random() * 0.12;
+				}
+
+				function drawBeam(beam) {
+					ctx.save();
+					ctx.translate(beam.x, beam.y);
+					ctx.rotate((beam.angle * Math.PI) / 180);
+
+					const pulsingOpacity = beam.opacity * (0.8 + Math.sin(beam.pulse) * 0.2);
+					const gradient = ctx.createLinearGradient(0, 0, 0, beam.length);
+					gradient.addColorStop(0, `hsla(${beam.hue}, 92%, 67%, 0)`);
+					gradient.addColorStop(0.1, `hsla(${beam.hue}, 92%, 67%, ${pulsingOpacity * 0.55})`);
+					gradient.addColorStop(0.4, `hsla(${beam.hue}, 92%, 67%, ${pulsingOpacity})`);
+					gradient.addColorStop(0.6, `hsla(${beam.hue}, 92%, 67%, ${pulsingOpacity})`);
+					gradient.addColorStop(0.9, `hsla(${beam.hue}, 92%, 67%, ${pulsingOpacity * 0.55})`);
+					gradient.addColorStop(1, `hsla(${beam.hue}, 92%, 67%, 0)`);
+
+					ctx.fillStyle = gradient;
+					ctx.fillRect(-beam.width / 2, 0, beam.width, beam.length);
+					ctx.restore();
+				}
+
+				function updateCanvasSize() {
+					const dpr = window.devicePixelRatio || 1;
+					const width = window.innerWidth;
+					const height = window.innerHeight;
+
+					canvas.width = Math.floor(width * dpr);
+					canvas.height = Math.floor(height * dpr);
+					canvas.style.width = `${width}px`;
+					canvas.style.height = `${height}px`;
+					ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+					const targetCount = minimumBeams;
+					beams.length = 0;
+					for (let i = 0; i < targetCount; i += 1) {
+						beams.push(createBeam(width, height));
+					}
+				}
+
+				function animate() {
+					const width = window.innerWidth;
+					const height = window.innerHeight;
+					ctx.clearRect(0, 0, width, height);
+					ctx.filter = 'blur(34px)';
+
+					for (let i = 0; i < beams.length; i += 1) {
+						const beam = beams[i];
+						beam.y -= beam.speed;
+						beam.pulse += beam.pulseSpeed;
+
+						if (beam.y + beam.length < -120) {
+							resetBeam(beam, i, beams.length);
+						}
+
+						drawBeam(beam);
+					}
+
+					rafId = window.requestAnimationFrame(animate);
+				}
+
+				updateCanvasSize();
+				window.addEventListener('resize', updateCanvasSize);
+				animate();
+
+				window.addEventListener('beforeunload', () => {
+					window.removeEventListener('resize', updateCanvasSize);
+					if (rafId) {
+						window.cancelAnimationFrame(rafId);
+					}
+				});
+			})();
+
 			const menuToggle = document.getElementById('menuToggle');
 			const navLinks = document.querySelector('.nav-links');
 
