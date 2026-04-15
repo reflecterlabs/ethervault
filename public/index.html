@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EtherVault – Liquid Market for AI Inference Capacity</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--primary: #ec4899;
+				--primary-dark: #db2777;
+				--secondary: #f472b6;
+				--bg: #0f0f0f;
+				--surface: #1a1a1a;
+				--border: #333333;
+				--text: #f0f0f0;
+				--text-muted: #ffffff;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: "Inter", sans-serif;
+				background-color: var(--bg);
+				color: var(--text);
+				line-height: 1.6;
+				overflow-x: hidden;
+			}
+
+			/* Header / Navigation */
+			header {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				border-bottom: 1px solid var(--border);
+				background: rgba(15, 15, 15, 0.95);
+				backdrop-filter: blur(10px);
+			}
+
+			nav {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo-nav {
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+				line-height: 0;
+			}
+
+			.logo-nav img {
+				height: 86px;
+				width: auto;
+				display: block;
+			}
+
+			nav a {
+				color: var(--text-muted);
+				text-decoration: none;
+				font-weight: 500;
+				transition: color 0.3s;
+			}
+
+			nav a:hover {
+				color: var(--primary);
+			}
+
+			/* Hero Section */
+			.hero {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 6rem 2rem;
+				text-align: center;
+			}
+
+			.hero-logo {
+				width: 160px;
+				height: 160px;
+				margin: 0 auto 2rem;
+				background: radial-gradient(circle, var(--secondary) 0%, var(--primary) 100%);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 4rem;
+				opacity: 0.1;
+			}
+
+			.hero img {
+				max-width: 200px;
+				width: 100%;
+				margin: 0 auto 2rem;
+				display: block;
+			}
+
+			.hero h1 {
+				font-size: clamp(2.5rem, 8vw, 4rem);
+				font-weight: 800;
+				letter-spacing: -0.03em;
+				line-height: 1.2;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, var(--primary), var(--secondary));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.hero .subtitle {
+				font-size: clamp(1.1rem, 3vw, 1.5rem);
+				color: var(--text-muted);
+				margin-bottom: 2rem;
+				max-width: 700px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.hero .description {
+				font-size: 1.1rem;
+				color: var(--text-muted);
+				max-width: 700px;
+				margin: 0 auto 3rem;
+				line-height: 1.8;
+			}
+
+			.cta-buttons {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-bottom: 3rem;
+			}
+
+			.btn {
+				padding: 0.875rem 2rem;
+				border-radius: 0.5rem;
+				font-weight: 600;
+				font-size: 1rem;
+				text-decoration: none;
+				transition: all 0.3s;
+				border: none;
+				cursor: pointer;
+			}
+
+			.btn-primary {
+				background: var(--primary);
+				color: white;
+			}
+
+			.btn-primary:hover {
+				background: var(--primary-dark);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+			}
+
+			.btn-secondary {
+				background: transparent;
+				border: 1.5px solid var(--border);
+				color: var(--text);
+			}
+
+			.btn-secondary:hover {
+				border-color: var(--primary);
+				color: var(--primary);
+			}
+
+			/* Value Props Section */
+			.value-props {
+				max-width: 1200px;
+				margin: 4rem auto 0;
+				padding: 1px 2rem;
+			}
+
+			.section-title {
+				text-align: center;
+				font-size: 2rem;
+				font-weight: 800;
+				margin-bottom: 3rem;
+				color: var(--primary);
+			}
+
+			.props-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-bottom: 4rem;
+			}
+
+			.prop-card {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: 0.75rem;
+				padding: 2rem;
+				transition: all 0.3s;
+			}
+
+			.prop-card:hover {
+				border-color: var(--primary);
+				box-shadow: 0 4px 24px rgba(236, 72, 153, 0.12);
+				transform: translateY(-4px);
+			}
+
+			.prop-icon {
+				width: 48px;
+				height: 48px;
+				background: linear-gradient(135deg, var(--primary), var(--secondary));
+				border-radius: 0.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+			}
+
+			.prop-card h3 {
+				font-size: 1.25rem;
+				font-weight: 700;
+				margin-bottom: 0.75rem;
+				color: var(--text);
+			}
+
+			.prop-card p {
+				color: var(--text-muted);
+				line-height: 1.7;
+				font-size: 0.95rem;
+			}
+
+			/* How It Works Section */
+			.how-it-works {
+				max-width: 1200px;
+				margin: 4rem auto;
+				padding: 4rem 2rem;
+				border-top: 1px solid var(--border);
+				border-bottom: 1px solid var(--border);
+			}
+
+			.steps {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+
+			.step {
+				text-align: center;
+			}
+
+			.step-number {
+				width: 50px;
+				height: 50px;
+				background: linear-gradient(135deg, var(--primary), var(--secondary));
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.5rem;
+				font-weight: 800;
+				color: white;
+				margin: 0 auto 1rem;
+			}
+
+			.step h3 {
+				font-weight: 700;
+				margin-bottom: 0.5rem;
+				color: var(--text);
+			}
+
+			.step p {
+				color: var(--text-muted);
+				font-size: 0.9rem;
+			}
+
+			/* Architecture Section */
+			.architecture {
+				max-width: 1200px;
+				margin: 4rem auto;
+				padding: 4rem 2rem;
+			}
+
+			.arch-content {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3rem;
+				align-items: center;
+			}
+
+			.arch-text h3 {
+				font-size: 1.5rem;
+				font-weight: 800;
+				margin-bottom: 1rem;
+				color: var(--primary);
+			}
+
+			.arch-text p {
+				color: var(--text-muted);
+				margin-bottom: 1rem;
+				line-height: 1.8;
+			}
+
+			.arch-list {
+				list-style: none;
+				margin-top: 1.5rem;
+			}
+
+			.arch-list li {
+				padding: 0.75rem 0;
+				padding-left: 2rem;
+				position: relative;
+				color: var(--text-muted);
+			}
+
+			.arch-list li:before {
+				content: "→";
+				position: absolute;
+				left: 0;
+				color: var(--primary);
+				font-weight: bold;
+			}
+
+			.arch-diagram {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: 0.75rem;
+				padding: 2rem;
+				text-align: center;
+				color: var(--text-muted);
+				font-family: monospace;
+				font-size: 0.9rem;
+				line-height: 1.8;
+			}
+
+			@media (max-width: 768px) {
+				.arch-content {
+					grid-template-columns: 1fr;
+				}
+
+				nav {
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				.cta-buttons {
+					flex-direction: column;
+				}
+
+				.btn {
+					width: 100%;
+				}
+			}
+
+			/* Footer */
+			footer {
+				border-top: 1px solid var(--border);
+				padding: 2rem;
+				text-align: center;
+				color: var(--text-muted);
+				font-size: 0.9rem;
+				margin-top: 4rem;
+			}
+
+			footer a {
+				color: var(--primary);
+				text-decoration: none;
+			}
+
+			footer a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<nav>
+				<a href="#" class="logo-nav">
+					<img src="/EtherVault_01.png" alt="EtherVault" />
+				</a>
+				<div>
+					<a href="#value">Value Proposition</a>
+					&nbsp;&nbsp;
+					<a href="#how">How It Works</a>
+					&nbsp;&nbsp;
+					<a href="#architecture">Architecture</a>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Hero Section -->
+		<section class="hero">
+			<h1>Liquid Market for AI Inference Capacity</h1>
+			<p class="subtitle">Lock in tomorrow's LLM capacity at today's prices</p>
+			<p class="description">
+				EtherVault is a treasury-backed protocol for trading future AI inference
+				capacity. Enterprises secure compute at predictable prices. Providers
+				monetize excess capacity. Uniswap v4 powers the market.
+			</p>
+			<div class="cta-buttons">
+				<button class="btn btn-primary">View Litepaper</button>
+				<button class="btn btn-secondary">Explore Protocol</button>
+			</div>
+		</section>
+
+		<!-- Value Proposition Section -->
+		<section id="value" class="value-props">
+			<h2 class="section-title">Why EtherVault?</h2>
+			<div class="props-grid">
+				<div class="prop-card">
+					<div class="prop-icon">💰</div>
+					<h3>Price Certainty</h3>
+					<p>Enterprises lock in compute costs today. No surprise price spikes when demand surges.</p>
+				</div>
+				<div class="prop-card">
+					<div class="prop-icon">📡</div>
+					<h3>Liquidity On-Chain</h3>
+					<p>
+						Built on Uniswap v4. Trade capacity tokens with dynamic fees that reflect network
+						utilization.
+					</p>
+				</div>
+				<div class="prop-card">
+					<div class="prop-icon">🔐</div>
+					<h3>Treasury Backed</h3>
+					<p>Capacity tokens backed by real stablecoin reserves. Redemption is always available.</p>
+				</div>
+				<div class="prop-card">
+					<div class="prop-icon">🚀</div>
+					<h3>Provider Revenue</h3>
+					<p>LLM providers monetize idle capacity and smooth revenue across demand cycles.</p>
+				</div>
+				<div class="prop-card">
+					<div class="prop-icon">⚙️</div>
+					<h3>Hook-Driven Fees</h3>
+					<p>Dynamic LP fees aligned with capacity utilization. Treasury capture via swap hooks.</p>
+				</div>
+				<div class="prop-card">
+					<div class="prop-icon">🌍</div>
+					<h3>Multi-Chain Ready</h3>
+					<p>Settlement across stablecoins (USDC, DAI, USDT). Works on Base and beyond.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- How It Works Section -->
+		<section id="how" class="how-it-works">
+			<h2 class="section-title">How It Works</h2>
+			<div class="steps">
+				<div class="step">
+					<div class="step-number">1</div>
+					<h3>Deposit Stablecoins</h3>
+					<p>Enterprises deposit USDC into the treasury and receive capacity tokens.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<h3>Trade on Uniswap v4</h3>
+					<p>Buy and sell capacity tokens. Dynamic fees reward long-term liquidity providers.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<h3>Redeem or Route</h3>
+					<p>Redeem capacity for inference or route payments to providers via the settlement layer.</p>
+				</div>
+				<div class="step">
+					<div class="step-number">4</div>
+					<h3>Earn Treasury Fees</h3>
+					<p>Hook captures fees on swaps. Governance may allocate to treasury growth or token buybacks.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Architecture Section -->
+		<section id="architecture" class="architecture">
+			<h2 class="section-title">On-Chain Architecture</h2>
+			<div class="arch-content">
+				<div class="arch-text">
+					<h3>Core Components</h3>
+					<p>
+						EtherVault is built with battle-tested Solidity contracts aligned with Uniswap v4
+						patterns:
+					</p>
+					<ul class="arch-list">
+						<li><strong>EtherVaultCapacityToken</strong> – ERC20 token representing AI compute capacity</li>
+						<li><strong>EtherVaultTreasury</strong> – Manages stablecoin reserves and minting/redemption</li>
+						<li><strong>EtherVaultMarketHook</strong> – Uniswap v4 hook for dynamic fees and treasury capture</li>
+						<li><strong>EtherVaultSettlementRouter</strong> – Routes value to treasury and LLM providers</li>
+						<li><strong>FeePolicy</strong> – Deterministic fee curves based on utilization</li>
+					</ul>
+					<p style="margin-top: 1.5rem; font-size: 0.9rem;">
+						TypeScript gateway available for payment-gated access and edge routing.
+					</p>
+				</div>
+				<div class="arch-diagram">
+					Enterprise<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;↓<br />
+					Treasury [USDC]<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;↓ (mint)<br />
+					Capacity Token [EVCAP]<br />
+					↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘<br />
+					Uniswap v4 Pool<br />
+					(dynamic fee hook)<br />
+					↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘<br />
+					Provider Network &nbsp;&nbsp;&nbsp; Treasury
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<p>
+				© 2026 EtherVault. Built with Solidity + Uniswap v4.
+				<a href="#">Docs</a> · <a href="#">GitHub</a> · <a href="#">Discord</a>
+			</p>
+		</footer>
+	</body>
+</html>
