@@ -501,9 +501,115 @@
 				transform-origin: left;
 			}
 
-			@media (max-width: 920px) {
-				.architecture {
+			/* Thesis Section Styles */
+			.thesis-container {
+				padding: 4.2rem 0;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+
+			.thesis-container::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				background: linear-gradient(135deg, rgba(67, 33, 102, 0.15) 0%, rgba(15, 8, 20, 0.8) 100%);
+				opacity: 1;
+			}
+
+			.thesis-container::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+				background: radial-gradient(circle at 80% -15%, rgba(138, 43, 226, 0.07), transparent 45%),
+							radial-gradient(circle at 20% 110%, rgba(255, 95, 166, 0.05), transparent 50%);
+			}
+
+			.thesis-container .section-title {
+				animation: slideInUp 0.7s ease-out;
+			}
+
+			.thesis-container .section-copy {
+				animation: slideInUp 0.8s ease-out 0.1s backwards;
+			}
+
+			.thesis-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 1.6rem;
+				margin-top: 2rem;
+			}
+
+			.thesis-point {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				animation: slideInUp 0.7s ease-out backwards;
+			}
+
+			.thesis-point:nth-child(1) { animation-delay: 0.15s; }
+			.thesis-point:nth-child(2) { animation-delay: 0.25s; }
+			.thesis-point:nth-child(3) { animation-delay: 0.35s; }
+			.thesis-point:nth-child(4) { animation-delay: 0.45s; }
+			.thesis-point:nth-child(5) { animation-delay: 0.55s; }
+
+			.thesis-number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 3.5rem;
+				height: 3.5rem;
+				border-radius: 1.2rem;
+				background: linear-gradient(135deg, rgba(255, 43, 144, 0.3), rgba(255, 95, 166, 0.15));
+				border: 1px solid rgba(255, 95, 166, 0.4);
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.45rem;
+				font-weight: 700;
+				color: var(--primary);
+				margin-bottom: 1rem;
+				backdrop-filter: blur(8px);
+				box-shadow: 0 4px 12px rgba(255, 43, 144, 0.12);
+			}
+
+			.thesis-title {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.18rem;
+				font-weight: 700;
+				margin-bottom: 0.8rem;
+				letter-spacing: -0.01em;
+				color: var(--text);
+			}
+
+			.thesis-description {
+				font-size: 0.95rem;
+				line-height: 1.65;
+				color: var(--muted);
+			}
+
+			.thesis-highlight {
+				color: #ffb3d9;
+				font-weight: 600;
+			}
+
+			@media (max-width: 768px) {
+				.thesis-grid {
 					grid-template-columns: 1fr;
+				}
+
+				.thesis-number {
+					width: 3rem;
+					height: 3rem;
+					font-size: 1.2rem;
+				}
+			}
 				}
 			}
 
@@ -576,6 +682,52 @@
 				</div>
 			</div>
 		</main>
+
+		<section class="thesis-container">
+			<div class="container">
+				<h2 class="section-title">The EtherVap Thesis</h2>
+				<p class="section-copy">
+					A comprehensive solution for enterprise AI infrastructure backed by tokenized futures and on-chain liquidity.
+				</p>
+				<div class="thesis-grid">
+					<div class="thesis-point">
+						<div class="thesis-number">1</div>
+						<h3 class="thesis-title">The Problem</h3>
+						<p class="thesis-description">
+							AI integration has become critical infrastructure. Yet <span class="thesis-highlight">$366B in anticipated demand surge by 2026</span> collides with a <span class="thesis-highlight">5 GW capacity gap</span> — triggering volatility, cost shocks, and service disruptions.
+						</p>
+					</div>
+					<div class="thesis-point">
+						<div class="thesis-number">2</div>
+						<h3 class="thesis-title">Target Market</h3>
+						<p class="thesis-description">
+							AI developers, enterprises running production inference (fintech, ERP), and multidisciplinary teams protecting critical operations from compute market volatility.
+						</p>
+					</div>
+					<div class="thesis-point">
+						<div class="thesis-number">3</div>
+						<h3 class="thesis-title">Value Proposition</h3>
+						<p class="thesis-description">
+							<span class="thesis-highlight">Secure future computing capacity at fixed prices</span> through blockchain-backed futures. Like oil futures protect LLMs, tokenized capacity preserves AI purchasing power with market liquidity.
+						</p>
+					</div>
+					<div class="thesis-point">
+						<div class="thesis-number">4</div>
+						<h3 class="thesis-title">Technical Edge</h3>
+						<p class="thesis-description">
+							Uniswap v4 hooks enable <span class="thesis-highlight">value-increasing trades through dynamic fee mechanics</span>. Capacity oracles and liquidation safety ensure verifiable, trustworthy market execution.
+						</p>
+					</div>
+					<div class="thesis-point">
+						<div class="thesis-number">5</div>
+						<h3 class="thesis-title">Vision</h3>
+						<p class="thesis-description">
+							Build a <span class="thesis-highlight">trillion-dollar AI computing economy</span> on tokenized infrastructure, enabling <span class="thesis-highlight">AI agents to participate</span> as capacity buyers, sellers, and market participants.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<section id="dependency">
 			<div class="container">
