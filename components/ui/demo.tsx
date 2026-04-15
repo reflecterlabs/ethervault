@@ -9,7 +9,7 @@ export const DemoOne = () => {
           animation={{ scale: 88, speed: 86 }}
           noise={{ opacity: 1, scale: 1.15 }}
           sizing='fill'
-          title='EtherVault'
+          title='EtherVap'
           subtitle='Tokenized capacity markets for always-on AI infrastructure.'
         />
       </div>

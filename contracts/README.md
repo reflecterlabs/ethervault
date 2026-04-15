@@ -1,6 +1,6 @@
-# EtherVault On-Chain Module
+# EtherVap On-Chain Module
 
-This folder contains the first-pass Solidity architecture for EtherVault, the liquid market for future AI inference capacity.
+This folder contains the first-pass Solidity architecture for EtherVap, the liquid market for future AI inference capacity.
 
 ## What this module covers
 

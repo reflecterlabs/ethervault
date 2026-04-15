@@ -55,9 +55,9 @@ const useInstanceId = (): string => {
   return `shadowoverlay-${cleanId}`;
 };
 
-const ETHERVAULT_BG =
+const ETHERVAP_BG =
   'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=80';
-const ETHERVAULT_NOISE =
+const ETHERVAP_NOISE =
   'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&w=700&q=70';
 
 export function Component({
@@ -67,7 +67,7 @@ export function Component({
   noise,
   style,
   className,
-  title = 'EtherVault',
+  title = 'EtherVap',
   subtitle = 'Liquid market for AI inference capacity'
 }: ShadowOverlayProps) {
   const id = useInstanceId();
@@ -160,7 +160,7 @@ export function Component({
           style={{
             width: '100%',
             height: '100%',
-            backgroundImage: `linear-gradient(145deg, rgba(10, 10, 10, 0.72), rgba(236, 72, 153, 0.20)), url(${ETHERVAULT_BG})`,
+            backgroundImage: `linear-gradient(145deg, rgba(10, 10, 10, 0.72), rgba(236, 72, 153, 0.20)), url(${ETHERVAP_BG})`,
             backgroundSize: sizing === 'stretch' ? '100% 100%' : 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'
@@ -192,7 +192,7 @@ export function Component({
         <div className='mx-auto mb-5 flex w-fit items-center gap-2 rounded-full border border-white/30 bg-black/30 px-4 py-2 backdrop-blur'>
           <Orbit className='h-4 w-4 text-pink-300' />
           <span className='text-xs font-semibold uppercase tracking-[0.16em] text-white/85'>
-            EtherVault Edge Experience
+            EtherVap Edge Experience
           </span>
         </div>
         <h1 className='text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl'>
@@ -212,7 +212,7 @@ export function Component({
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: `url(${ETHERVAULT_NOISE})`,
+            backgroundImage: `url(${ETHERVAP_NOISE})`,
             backgroundSize: `${noise.scale * 220}px`,
             backgroundRepeat: 'repeat',
             opacity: noise.opacity / 7,

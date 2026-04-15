@@ -3,30 +3,40 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>EtherVault – Liquid Market for AI Inference Capacity</title>
+		<title>EtherVap | AI Infrastructure Risk Management for Enterprises</title>
+		<meta
+			name="description"
+			content="EtherVap helps enterprises hedge AI capacity risk, stabilize inference costs, and protect business continuity through a liquid on-chain market for future AI compute."
+		/>
+		<meta
+			name="keywords"
+			content="AI infrastructure risk management, enterprise AI continuity, AI cost predictability, hedging AI compute capacity, future inference capacity market"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
 		<style>
 			:root {
-				--primary: #ec4899;
-				--primary-dark: #db2777;
-				--secondary: #f472b6;
-				--bg: #0f0f0f;
-				--surface: #1a1a1a;
-				--border: #333333;
-				--text: #f0f0f0;
-				--text-muted: #ffffff;
+				--bg: #0b0712;
+				--bg-2: #1a0a17;
+				--surface: #221127;
+				--surface-2: #2f1531;
+				--border: #5b2f58;
+				--text: #ffe7f6;
+				--muted: #d4aac7;
+				--primary: #ff5fa6;
+				--primary-strong: #ff2b90;
+				--accent: #ff9fcf;
 			}
 
 			* {
+				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
-				box-sizing: border-box;
 			}
 
 			html {
@@ -35,387 +45,360 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				background-color: var(--bg);
+				background:
+					radial-gradient(circle at 85% 12%, rgba(255, 43, 144, 0.16), transparent 36%),
+					radial-gradient(circle at 8% 78%, rgba(255, 95, 166, 0.11), transparent 28%),
+					linear-gradient(140deg, #09060f 0%, #130814 44%, #0b0712 100%);
 				color: var(--text);
 				line-height: 1.6;
+				min-height: 100vh;
 				overflow-x: hidden;
 			}
 
-			/* Header / Navigation */
+			.container {
+				max-width: 1220px;
+				margin: 0 auto;
+				padding: 0 1.4rem;
+			}
+
 			header {
 				position: sticky;
 				top: 0;
-				z-index: 100;
-				border-bottom: 1px solid var(--border);
-				background: rgba(15, 15, 15, 0.95);
+				z-index: 20;
+				border-bottom: 1px solid rgba(255, 95, 166, 0.22);
+				background: rgba(8, 5, 12, 0.86);
 				backdrop-filter: blur(10px);
 			}
 
 			nav {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 1rem 2rem;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				padding: 1rem 0;
+				gap: 1.2rem;
 			}
 
-			.logo-nav {
-				display: flex;
+			.brand {
+				display: inline-flex;
 				align-items: center;
+				gap: 0.65rem;
+				color: var(--text);
 				text-decoration: none;
-				line-height: 0;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.2rem;
+				font-weight: 700;
 			}
 
-			.logo-nav img {
-				height: 86px;
+			.brand img {
+				height: 46px;
 				width: auto;
-				display: block;
 			}
 
-			nav a {
-				color: var(--text-muted);
+			.nav-links {
+				display: flex;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+			}
+
+			.nav-links a {
+				color: var(--muted);
 				text-decoration: none;
-				font-weight: 500;
-				transition: color 0.3s;
+				font-size: 0.95rem;
+				transition: color 0.22s;
 			}
 
-			nav a:hover {
+			.nav-links a:hover {
 				color: var(--primary);
 			}
 
-			/* Hero Section */
 			.hero {
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 6rem 2rem;
-				text-align: center;
+				padding: 5.2rem 0 3.4rem;
 			}
 
-			.hero-logo {
-				width: 160px;
-				height: 160px;
-				margin: 0 auto 2rem;
-				background: radial-gradient(circle, var(--secondary) 0%, var(--primary) 100%);
-				border-radius: 50%;
-				display: flex;
+			.kicker {
+				display: inline-flex;
 				align-items: center;
-				justify-content: center;
-				font-size: 4rem;
-				opacity: 0.1;
+				gap: 0.35rem;
+				padding: 0.4rem 0.72rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 95, 166, 0.35);
+				background: rgba(255, 95, 166, 0.1);
+				font-size: 0.72rem;
+				font-weight: 600;
+				letter-spacing: 0.11em;
+				text-transform: uppercase;
+				color: var(--accent);
 			}
 
-			.hero img {
-				max-width: 200px;
-				width: 100%;
-				margin: 0 auto 2rem;
-				display: block;
+			h1 {
+				margin-top: 1rem;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(2.15rem, 7.5vw, 4.7rem);
+				line-height: 1.01;
+				letter-spacing: -0.02em;
+				max-width: 980px;
 			}
 
-			.hero h1 {
-				font-size: clamp(2.5rem, 8vw, 4rem);
-				font-weight: 800;
-				letter-spacing: -0.03em;
-				line-height: 1.2;
-				margin-bottom: 1rem;
-				background: linear-gradient(135deg, var(--primary), var(--secondary));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+			.hero-sub {
+				margin-top: 1.2rem;
+				max-width: 860px;
+				font-size: clamp(1.04rem, 2.7vw, 1.44rem);
+				color: #ffd8ef;
 			}
 
-			.hero .subtitle {
-				font-size: clamp(1.1rem, 3vw, 1.5rem);
-				color: var(--text-muted);
-				margin-bottom: 2rem;
-				max-width: 700px;
-				margin-left: auto;
-				margin-right: auto;
+			.hero-copy {
+				margin-top: 1rem;
+				max-width: 760px;
+				color: var(--muted);
 			}
 
-			.hero .description {
-				font-size: 1.1rem;
-				color: var(--text-muted);
-				max-width: 700px;
-				margin: 0 auto 3rem;
-				line-height: 1.8;
-			}
-
-			.cta-buttons {
+			.hero-cta {
 				display: flex;
-				gap: 1rem;
-				justify-content: center;
+				gap: 0.9rem;
+				margin-top: 2rem;
 				flex-wrap: wrap;
-				margin-bottom: 3rem;
 			}
 
 			.btn {
-				padding: 0.875rem 2rem;
-				border-radius: 0.5rem;
-				font-weight: 600;
-				font-size: 1rem;
-				text-decoration: none;
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
-				transition: all 0.3s;
-				border: none;
-				cursor: pointer;
+				padding: 0.82rem 1.15rem;
+				border-radius: 0.72rem;
+				text-decoration: none;
+				font-weight: 600;
+				transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s, color 0.22s;
 			}
 
 			.btn-primary {
-				background: var(--primary);
-				color: white;
+				background: linear-gradient(140deg, var(--primary-strong), var(--primary));
+				color: #290315;
+				box-shadow: 0 11px 30px rgba(255, 43, 144, 0.28);
 			}
 
 			.btn-primary:hover {
-				background: var(--primary-dark);
 				transform: translateY(-2px);
-				box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+				box-shadow: 0 16px 36px rgba(255, 43, 144, 0.38);
 			}
 
 			.btn-secondary {
-				background: transparent;
-				border: 1.5px solid var(--border);
+				border: 1px solid rgba(255, 95, 166, 0.34);
 				color: var(--text);
+				background: rgba(255, 255, 255, 0.02);
 			}
 
 			.btn-secondary:hover {
-				border-color: var(--primary);
+				border-color: rgba(255, 95, 166, 0.74);
 				color: var(--primary);
 			}
 
-			/* Value Props Section */
-			.value-props {
-				max-width: 1200px;
-				margin: 4rem auto 0;
-				padding: 1px 2rem;
+			.metrics {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(140px, 1fr));
+				gap: 0.8rem;
+				margin-top: 2.25rem;
+			}
+
+			.metric {
+				padding: 0.82rem;
+				border-radius: 0.8rem;
+				border: 1px solid rgba(255, 95, 166, 0.22);
+				background: linear-gradient(170deg, rgba(47, 21, 49, 0.58), rgba(25, 11, 31, 0.6));
+			}
+
+			.metric-label {
+				font-size: 0.72rem;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.09em;
+			}
+
+			.metric-value {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.18rem;
+				font-weight: 700;
+				margin-top: 0.2rem;
+			}
+
+			section {
+				padding: 2.8rem 0;
 			}
 
 			.section-title {
-				text-align: center;
-				font-size: 2rem;
-				font-weight: 800;
-				margin-bottom: 3rem;
-				color: var(--primary);
-			}
-
-			.props-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 2rem;
-				margin-bottom: 4rem;
-			}
-
-			.prop-card {
-				background: var(--surface);
-				border: 1px solid var(--border);
-				border-radius: 0.75rem;
-				padding: 2rem;
-				transition: all 0.3s;
-			}
-
-			.prop-card:hover {
-				border-color: var(--primary);
-				box-shadow: 0 4px 24px rgba(236, 72, 153, 0.12);
-				transform: translateY(-4px);
-			}
-
-			.prop-icon {
-				width: 48px;
-				height: 48px;
-				background: linear-gradient(135deg, var(--primary), var(--secondary));
-				border-radius: 0.5rem;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-bottom: 1rem;
-				font-size: 1.5rem;
-			}
-
-			.prop-card h3 {
-				font-size: 1.25rem;
-				font-weight: 700;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(1.45rem, 4vw, 2.45rem);
+				line-height: 1.1;
+				letter-spacing: -0.01em;
 				margin-bottom: 0.75rem;
-				color: var(--text);
 			}
 
-			.prop-card p {
-				color: var(--text-muted);
-				line-height: 1.7;
-				font-size: 0.95rem;
+			.section-copy {
+				max-width: 760px;
+				color: var(--muted);
+				margin-bottom: 1.5rem;
 			}
 
-			/* How It Works Section */
-			.how-it-works {
-				max-width: 1200px;
-				margin: 4rem auto;
-				padding: 4rem 2rem;
-				border-top: 1px solid var(--border);
-				border-bottom: 1px solid var(--border);
-			}
-
-			.steps {
+			.grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-				gap: 2rem;
-				margin-top: 2rem;
+				gap: 0.95rem;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 			}
 
-			.step {
-				text-align: center;
+			.card {
+				padding: 1rem;
+				border-radius: 0.95rem;
+				border: 1px solid rgba(255, 95, 166, 0.22);
+				background: linear-gradient(145deg, rgba(34, 17, 39, 0.78), rgba(21, 10, 30, 0.82));
 			}
 
-			.step-number {
-				width: 50px;
-				height: 50px;
-				background: linear-gradient(135deg, var(--primary), var(--secondary));
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 1.5rem;
-				font-weight: 800;
-				color: white;
-				margin: 0 auto 1rem;
+			.card h3 {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 1.06rem;
+				margin-bottom: 0.42rem;
 			}
 
-			.step h3 {
-				font-weight: 700;
-				margin-bottom: 0.5rem;
-				color: var(--text);
+			.card p {
+				color: var(--muted);
+				font-size: 0.94rem;
 			}
 
-			.step p {
-				color: var(--text-muted);
-				font-size: 0.9rem;
+			.risk-strip {
+				border: 1px solid rgba(255, 95, 166, 0.24);
+				border-radius: 1rem;
+				padding: 1.12rem;
+				background: rgba(255, 95, 166, 0.08);
+				margin-top: 0.85rem;
 			}
 
-			/* Architecture Section */
+			.risk-strip strong {
+				color: #ffdff2;
+			}
+
 			.architecture {
-				max-width: 1200px;
-				margin: 4rem auto;
-				padding: 4rem 2rem;
-			}
-
-			.arch-content {
 				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 3rem;
-				align-items: center;
+				gap: 1rem;
+				grid-template-columns: 1.1fr 1fr;
 			}
 
-			.arch-text h3 {
-				font-size: 1.5rem;
-				font-weight: 800;
-				margin-bottom: 1rem;
-				color: var(--primary);
-			}
-
-			.arch-text p {
-				color: var(--text-muted);
-				margin-bottom: 1rem;
-				line-height: 1.8;
+			.arch-panel {
+				border: 1px solid rgba(255, 95, 166, 0.24);
+				border-radius: 1rem;
+				padding: 1.05rem;
+				background: linear-gradient(160deg, rgba(31, 14, 35, 0.9), rgba(19, 9, 25, 0.92));
 			}
 
 			.arch-list {
 				list-style: none;
-				margin-top: 1.5rem;
+				display: grid;
+				gap: 0.6rem;
 			}
 
 			.arch-list li {
-				padding: 0.75rem 0;
-				padding-left: 2rem;
+				color: var(--muted);
+				padding-left: 1rem;
 				position: relative;
-				color: var(--text-muted);
 			}
 
-			.arch-list li:before {
-				content: "→";
+			.arch-list li::before {
+				content: "";
 				position: absolute;
 				left: 0;
-				color: var(--primary);
-				font-weight: bold;
+				top: 0.58em;
+				width: 0.42rem;
+				height: 0.42rem;
+				border-radius: 999px;
+				background: var(--primary);
 			}
 
-			.arch-diagram {
-				background: var(--surface);
-				border: 1px solid var(--border);
-				border-radius: 0.75rem;
-				padding: 2rem;
-				text-align: center;
-				color: var(--text-muted);
-				font-family: monospace;
-				font-size: 0.9rem;
-				line-height: 1.8;
+			.diagram {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: 0.92rem;
+				line-height: 1.75;
+				color: #ffd9ef;
+				white-space: pre-line;
 			}
 
-			@media (max-width: 768px) {
-				.arch-content {
-					grid-template-columns: 1fr;
-				}
-
-				nav {
-					flex-direction: column;
-					gap: 1rem;
-				}
-
-				.cta-buttons {
-					flex-direction: column;
-				}
-
-				.btn {
-					width: 100%;
-				}
-			}
-
-			/* Footer */
 			footer {
-				border-top: 1px solid var(--border);
-				padding: 2rem;
-				text-align: center;
-				color: var(--text-muted);
-				font-size: 0.9rem;
-				margin-top: 4rem;
+				padding: 2.5rem 0;
+				border-top: 1px solid rgba(255, 95, 166, 0.2);
+				margin-top: 1.5rem;
 			}
 
-			footer a {
-				color: var(--primary);
+			.footer-inner {
+				display: flex;
+				justify-content: space-between;
+				gap: 1rem;
+				flex-wrap: wrap;
+				color: var(--muted);
+				font-size: 0.92rem;
+			}
+
+			.footer-links {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-links a {
+				color: var(--muted);
 				text-decoration: none;
 			}
 
-			footer a:hover {
-				text-decoration: underline;
+			.footer-links a:hover {
+				color: var(--primary);
+			}
+
+			@media (max-width: 920px) {
+				.architecture {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 720px) {
+				.nav-links {
+					display: none;
+				}
+
+				.hero {
+					padding-top: 4.3rem;
+				}
+
+				.metrics {
+					grid-template-columns: 1fr;
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<!-- Header -->
 		<header>
-			<nav>
-				<a href="#" class="logo-nav">
-					<img src="/EtherVault_01.png" alt="EtherVault" />
-				</a>
-				<div>
-					<a href="#value">Value Proposition</a>
-					&nbsp;&nbsp;
-					<a href="#how">How It Works</a>
-					&nbsp;&nbsp;
-					<a href="#architecture">Architecture</a>
-				</div>
-			</nav>
+			<div class="container">
+				<nav>
+					<a href="#" class="brand">
+						<img src="/EtherVault_01.png" alt="EtherVap" />
+						<span>EtherVap</span>
+					</a>
+					<div class="nav-links">
+						<a href="#dependency">Dependency Reality</a>
+						<a href="#risk">Business Risk</a>
+						<a href="#solution">Resilience Layer</a>
+						<a href="#architecture">On Chain Architecture</a>
+					</div>
+				</nav>
+			</div>
 		</header>
 
-		<!-- Hero Section -->
-		<section class="hero">
-			<h1>Liquid Market for AI Inference Capacity</h1>
-			<p class="subtitle">Lock in tomorrow's LLM capacity at today's prices</p>
-			<p class="description">
-				EtherVault is a treasury-backed protocol for trading future AI inference
-				capacity. Enterprises secure compute at predictable prices. Providers
-				monetize excess capacity. Uniswap v4 powers the market.
+		<main class="container hero">
+			<span class="kicker">Enterprise AI Continuity</span>
+			<h1>AI Infrastructure Is Now a Business Dependency. EtherVap Is the Protection Layer.</h1>
+			<p class="hero-sub">
+				Hedge AI capacity risk, stabilize inference costs, and keep critical operations online when
+				compute markets get volatile.
 			</p>
-			<div class="cta-buttons">
+			<p class="hero-copy">
+				EtherVap is a liquid on-chain market for future AI inference capacity. It gives leadership
+				teams a practical way to move from reactive purchasing to continuity-first planning.
+			</p>
+			<div class="hero-cta">
 				<a
 					class="btn btn-primary"
 					href="https://github.com/reflecterlabs/ethervault#readme"
@@ -426,122 +409,140 @@
 				</a>
 				<a class="btn btn-secondary" href="#architecture">Explore Protocol</a>
 			</div>
-		</section>
+			<div class="metrics">
+				<div class="metric">
+					<div class="metric-label">Focus</div>
+					<div class="metric-value">Business Continuity</div>
+				</div>
+				<div class="metric">
+					<div class="metric-label">Primary Goal</div>
+					<div class="metric-value">Cost Predictability</div>
+				</div>
+				<div class="metric">
+					<div class="metric-label">Operating Model</div>
+					<div class="metric-value">Treasury-Backed Liquidity</div>
+				</div>
+			</div>
+		</main>
 
-		<!-- Value Proposition Section -->
-		<section id="value" class="value-props">
-			<h2 class="section-title">Why EtherVault?</h2>
-			<div class="props-grid">
-				<div class="prop-card">
-					<div class="prop-icon">💰</div>
-					<h3>Price Certainty</h3>
-					<p>Enterprises lock in compute costs today. No surprise price spikes when demand surges.</p>
-				</div>
-				<div class="prop-card">
-					<div class="prop-icon">📡</div>
-					<h3>Liquidity On-Chain</h3>
-					<p>
-						Built on Uniswap v4. Trade capacity tokens with dynamic fees that reflect network
-						utilization.
-					</p>
-				</div>
-				<div class="prop-card">
-					<div class="prop-icon">🔐</div>
-					<h3>Treasury Backed</h3>
-					<p>Capacity tokens backed by real stablecoin reserves. Redemption is always available.</p>
-				</div>
-				<div class="prop-card">
-					<div class="prop-icon">🚀</div>
-					<h3>Provider Revenue</h3>
-					<p>LLM providers monetize idle capacity and smooth revenue across demand cycles.</p>
-				</div>
-				<div class="prop-card">
-					<div class="prop-icon">⚙️</div>
-					<h3>Hook-Driven Fees</h3>
-					<p>Dynamic LP fees aligned with capacity utilization. Treasury capture via swap hooks.</p>
-				</div>
-				<div class="prop-card">
-					<div class="prop-icon">🌍</div>
-					<h3>Multi-Chain Ready</h3>
-					<p>Settlement across stablecoins (USDC, DAI, USDT). Works on Base and beyond.</p>
+		<section id="dependency">
+			<div class="container">
+				<h2 class="section-title">The New Enterprise Dependency</h2>
+				<p class="section-copy">
+					For many technology companies, AI is no longer a feature. It is part of the operating system:
+					support, engineering, sales enablement, fraud controls, and product workflows depend on stable
+					inference access.
+				</p>
+				<div class="grid">
+					<article class="card">
+						<h3>AI in Revenue Workflows</h3>
+						<p>Customer-facing products increasingly rely on model response quality and uptime.</p>
+					</article>
+					<article class="card">
+						<h3>AI in Internal Operations</h3>
+						<p>Teams depend on AI copilots to keep throughput and decision speed at target levels.</p>
+					</article>
+					<article class="card">
+						<h3>AI in Service Commitments</h3>
+						<p>SLAs and margin assumptions are now directly exposed to compute cost and availability.</p>
+					</article>
 				</div>
 			</div>
 		</section>
 
-		<!-- How It Works Section -->
-		<section id="how" class="how-it-works">
-			<h2 class="section-title">How It Works</h2>
-			<div class="steps">
-				<div class="step">
-					<div class="step-number">1</div>
-					<h3>Deposit Stablecoins</h3>
-					<p>Enterprises deposit USDC into the treasury and receive capacity tokens.</p>
+		<section id="risk">
+			<div class="container">
+				<h2 class="section-title">What This Dependency Breaks Without Protection</h2>
+				<p class="section-copy">
+					When AI capacity is purchased only at spot conditions, businesses absorb volatility they cannot
+					control.
+				</p>
+				<div class="grid">
+					<article class="card">
+						<h3>Cost Shock Risk</h3>
+						<p>Inference costs spike under demand pressure, breaking planning and pricing assumptions.</p>
+					</article>
+					<article class="card">
+						<h3>Availability Risk</h3>
+						<p>Capacity constraints degrade response times and force quality or throughput tradeoffs.</p>
+					</article>
+					<article class="card">
+						<h3>Concentration Risk</h3>
+						<p>Over-reliance on a small provider set compounds strategic and operational exposure.</p>
+					</article>
 				</div>
-				<div class="step">
-					<div class="step-number">2</div>
-					<h3>Trade on Uniswap v4</h3>
-					<p>Buy and sell capacity tokens. Dynamic fees reward long-term liquidity providers.</p>
-				</div>
-				<div class="step">
-					<div class="step-number">3</div>
-					<h3>Redeem or Route</h3>
-					<p>Redeem capacity for inference or route payments to providers via the settlement layer.</p>
-				</div>
-				<div class="step">
-					<div class="step-number">4</div>
-					<h3>Earn Treasury Fees</h3>
-					<p>Hook captures fees on swaps. Governance may allocate to treasury growth or token buybacks.</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- Architecture Section -->
-		<section id="architecture" class="architecture">
-			<h2 class="section-title">On Chain Architecture</h2>
-			<div class="arch-content">
-				<div class="arch-text">
-					<h3>Core Components</h3>
-					<p>
-						EtherVault is built with battle-tested Solidity contracts aligned with Uniswap v4
-						patterns:
-					</p>
-					<ul class="arch-list">
-						<li><strong>EtherVaultCapacityToken</strong> – ERC20 token representing AI compute capacity</li>
-						<li><strong>EtherVaultTreasury</strong> – Manages stablecoin reserves and minting/redemption</li>
-						<li><strong>EtherVaultMarketHook</strong> – Uniswap v4 hook for dynamic fees and treasury capture</li>
-						<li><strong>EtherVaultSettlementRouter</strong> – Routes value to treasury and LLM providers</li>
-						<li><strong>FeePolicy</strong> – Deterministic fee curves based on utilization</li>
-					</ul>
-					<p style="margin-top: 1.5rem; font-size: 0.9rem;">
-						TypeScript gateway available for payment-gated access and edge routing.
-					</p>
-				</div>
-				<div class="arch-diagram">
-					Enterprise<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;↓<br />
-					Treasury [USDC]<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;↓ (mint)<br />
-					Capacity Token [EVCAP]<br />
-					↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘<br />
-					Uniswap v4 Pool<br />
-					(dynamic fee hook)<br />
-					↙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘<br />
-					Provider Network &nbsp;&nbsp;&nbsp; Treasury
+				<div class="risk-strip">
+					<strong>Business outcome:</strong>
+					Service quality degrades, margins compress, and critical AI workflows become harder to guarantee.
 				</div>
 			</div>
 		</section>
 
-		<!-- Footer -->
+		<section id="solution">
+			<div class="container">
+				<h2 class="section-title">How EtherVap Protects Continuity</h2>
+				<p class="section-copy">
+					EtherVap introduces a hedgeable market for future AI capacity. Teams can secure exposure ahead
+					of demand, improve budget reliability, and manage risk with transparent on-chain execution.
+				</p>
+				<div class="grid">
+					<article class="card">
+						<h3>Forward Capacity Access</h3>
+						<p>Acquire future inference capacity before volatility hits operating budgets.</p>
+					</article>
+					<article class="card">
+						<h3>Treasury-Backed Structure</h3>
+						<p>Reserve-backed mechanics align market activity with practical settlement confidence.</p>
+					</article>
+					<article class="card">
+						<h3>Liquidity and Price Discovery</h3>
+						<p>Uniswap v4 hooks enable dynamic fee behavior tied to utilization conditions.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section id="architecture">
+			<div class="container">
+				<h2 class="section-title">On Chain Architecture</h2>
+				<p class="section-copy">
+					A compact execution stack designed for enterprise-grade verifiability and adaptable market logic.
+				</p>
+				<div class="architecture">
+					<div class="arch-panel">
+						<ul class="arch-list">
+							<li><strong>EtherVaultCapacityToken</strong> for tokenized AI capacity units.</li>
+							<li><strong>EtherVaultTreasury</strong> for reserve management and mint/redeem flows.</li>
+							<li><strong>EtherVaultMarketHook</strong> for utilization-aware dynamic fee mechanics.</li>
+							<li><strong>EtherVaultSettlementRouter</strong> for treasury-provider payout routing.</li>
+							<li><strong>FeePolicy</strong> for deterministic fee governance rules.</li>
+						</ul>
+					</div>
+					<div class="arch-panel">
+						<div class="diagram">Enterprise Demand
++ Treasury Deposit
++ Capacity Minting (EVCAP)
++ Uniswap v4 Liquidity + Hooks
++ Settlement Routing
++ Redeem / Consume Future Capacity</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<footer>
-			<p>
-				© 2026 EtherVault. Built with Solidity + Uniswap v4.
-				<a href="https://github.com/reflecterlabs/ethervault#readme" target="_blank" rel="noreferrer"
-					>Docs</a
-				> ·
-				<a href="https://github.com/reflecterlabs/ethervault" target="_blank" rel="noreferrer"
-					>GitHub</a
-				> · <a href="#">Discord</a>
-			</p>
+			<div class="container footer-inner">
+				<p>© 2026 EtherVap. AI infrastructure risk management for continuity-focused companies.</p>
+				<div class="footer-links">
+					<a href="https://github.com/reflecterlabs/ethervault#readme" target="_blank" rel="noreferrer"
+						>Docs</a
+					>
+					<a href="https://github.com/reflecterlabs/ethervault" target="_blank" rel="noreferrer"
+						>GitHub</a
+					>
+					<a href="#architecture">Architecture</a>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>

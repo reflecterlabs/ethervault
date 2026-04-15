@@ -1,18 +1,31 @@
-# EtherVault
+# EtherVap
 
-EtherVault is a liquid on-chain market for future AI inference capacity.
+EtherVap is an AI infrastructure risk management layer for enterprises.
+
+It provides a liquid on-chain market for future AI inference capacity so teams can
+hedge compute volatility, stabilize costs, and protect operational continuity.
 
 This repository combines:
 - On-chain protocol primitives for capacity tokenization, treasury reserves, dynamic market fees, and provider settlement.
 - A Cloudflare Worker gateway for edge routing and x402-based payment-gated API access.
 
-## What EtherVault Solves
+## Business Risks EtherVap Mitigates
 
-- Enterprises need predictable access to AI inference capacity.
-- Providers need better monetization of idle capacity.
-- Markets need transparent price discovery and liquidity.
+- AI capacity volatility and price spikes that break planning assumptions.
+- Service reliability degradation when capacity is constrained during demand surges.
+- Concentration risk from over-reliance on a small set of model or compute providers.
+- Margin pressure caused by unpredictable inference spend.
 
-EtherVault addresses this with treasury-backed capacity tokens and Uniswap v4 hook-based market mechanics.
+EtherVap addresses these risks with treasury-backed capacity tokens,
+transparent liquidity, and Uniswap v4 hook-based market mechanics.
+
+## Why This Matters Beyond Technology
+
+AI is now embedded in revenue, operations, and support workflows. For many companies,
+AI infrastructure is no longer a technical detail; it is a business dependency.
+
+When compute access is managed only at spot conditions, continuity and margin are exposed.
+EtherVap helps teams move from reactive purchasing to continuity-first planning.
 
 ## Product Architecture
 
@@ -114,7 +127,7 @@ npm run dev
 ```
 
 Open:
-- `http://localhost:8787` (EtherVault landing page)
+- `http://localhost:8787` (EtherVap landing page)
 - `http://localhost:8787/__x402/health` (public health endpoint)
 - `http://localhost:8787/__x402/protected` (payment-gated test endpoint)
 
@@ -138,7 +151,7 @@ Primary runtime variables live in `wrangler.jsonc`.
   {
     "pattern": "/premium/*",
     "price": "$0.10",
-    "description": "Premium EtherVault API access"
+    "description": "Premium EtherVap API access"
   }
 ]
 ```
