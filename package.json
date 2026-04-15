@@ -21,7 +21,11 @@
 	},
 	"dependencies": {
 		"@coinbase/x402": "2.0.0",
+		"framer-motion": "^11.18.2",
 		"hono": "4.11.1",
+		"lucide-react": "^0.469.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
 		"x402-hono": "1.0.0"
 	},
 	"devDependencies": {
@@ -39,6 +43,8 @@
 	"scripts": {
 		"cf-typegen": "wrangler types --env-interface CloudflareBindings",
 		"deploy": "wrangler deploy --minify",
+		"deploy:pages": "wrangler pages deploy public --project-name ethervault-basic",
+		"pages:project:init": "wrangler pages project create ethervault-basic --production-branch main",
 		"dev": "wrangler dev",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",

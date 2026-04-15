@@ -150,9 +150,21 @@ Primary runtime variables live in `wrangler.jsonc`.
 | `npm run dev` | Start local Worker + frontend |
 | `npm run typecheck` | TypeScript checks |
 | `npm run lint` | Full lint + format checks |
+| `npm run deploy:pages` | Deploy basic static site to Cloudflare Pages |
 | `npm run deploy` | Deploy to Cloudflare Workers |
 
-## Deploy
+## Deploy (Basic - Cloudflare Pages)
+
+Use this path if you only need the landing site and want fewer moving parts than a Worker deployment.
+
+```bash
+npm run pages:project:init   # one time
+npm run deploy:pages
+```
+
+The repository now includes a GitHub Actions workflow that deploys `public/` to Pages on every push to `main`.
+
+## Deploy (Worker/API - Optional)
 
 ```bash
 npx wrangler secret put JWT_SECRET
@@ -169,6 +181,7 @@ For production:
 - Worker/API flow can be validated via `test-client.ts`.
 - Smart contracts are located in `contracts/` with Foundry config scaffolded.
 - Add/expand protocol tests under `contracts/test/` for treasury, fee policy, and hook behavior.
+- React UI integration notes (shadcn + Tailwind + TypeScript) are in `docs/react-ui-setup.md`.
 
 ## Resources
 
