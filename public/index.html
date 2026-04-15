@@ -53,11 +53,10 @@
 				line-height: 1.6;
 				min-height: 100vh;
 				overflow-x: hidden;
-				position: relative;
 			}
 
 			#beams-bg {
-				position: fixed;
+				position: absolute;
 				inset: 0;
 				width: 100%;
 				height: 100%;
@@ -67,20 +66,12 @@
 			}
 
 			.beams-overlay {
-				position: fixed;
+				position: absolute;
 				inset: 0;
 				pointer-events: none;
 				z-index: 0;
 				background: radial-gradient(circle at 50% 10%, rgba(255, 95, 166, 0.15), transparent 50%);
 				backdrop-filter: blur(42px);
-			}
-
-			header,
-			main,
-			section,
-			footer {
-				position: relative;
-				z-index: 1;
 			}
 
 			.container {
@@ -503,6 +494,19 @@
 
 			.hero {
 				padding: 5.2rem 0 3.4rem;
+				position: relative;
+				overflow: hidden;
+				isolation: isolate;
+			}
+
+			.hero > * {
+				position: relative;
+				z-index: 1;
+			}
+
+			.hero > #beams-bg,
+			.hero > .beams-overlay {
+				z-index: 0;
 			}
 
 			.kicker {
@@ -527,6 +531,13 @@
 				line-height: 1.01;
 				letter-spacing: -0.02em;
 				max-width: 980px;
+			}
+
+			.hero h1 {
+				text-shadow:
+					0 0 10px rgba(255, 255, 255, 0.42),
+					0 0 26px rgba(255, 255, 255, 0.25),
+					0 0 54px rgba(255, 255, 255, 0.16);
 			}
 
 			.hero-sub {
@@ -1019,8 +1030,6 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="beams-bg" aria-hidden="true"></canvas>
-		<div class="beams-overlay" aria-hidden="true"></div>
 		<header>
 			<div class="container">
 				<nav>
@@ -1043,6 +1052,8 @@
 		</header>
 
 		<main class="container hero">
+			<canvas id="beams-bg" aria-hidden="true"></canvas>
+			<div class="beams-overlay" aria-hidden="true"></div>
 			<h1>AI Infrastructure Is Now a Business Dependency. EtherVap Is the Protection Layer.</h1>
 			<p class="hero-sub">
 				Hedge AI capacity risk, stabilize inference costs, and keep critical operations online when
@@ -1247,6 +1258,9 @@
 
 		<script>
 			(() => {
+				const hero = document.querySelector('main.hero');
+				if (!hero) return;
+
 				const canvas = document.getElementById('beams-bg');
 				if (!canvas) return;
 
@@ -1274,8 +1288,8 @@
 				}
 
 				function resetBeam(beam, index, total) {
-					const width = window.innerWidth;
-					const height = window.innerHeight;
+					const width = hero.clientWidth;
+					const height = hero.clientHeight;
 					const column = index % 3;
 					const spacing = width / 3;
 
@@ -1308,8 +1322,8 @@
 
 				function updateCanvasSize() {
 					const dpr = window.devicePixelRatio || 1;
-					const width = window.innerWidth;
-					const height = window.innerHeight;
+					const width = hero.clientWidth;
+					const height = hero.clientHeight;
 
 					canvas.width = Math.floor(width * dpr);
 					canvas.height = Math.floor(height * dpr);
@@ -1325,8 +1339,8 @@
 				}
 
 				function animate() {
-					const width = window.innerWidth;
-					const height = window.innerHeight;
+					const width = hero.clientWidth;
+					const height = hero.clientHeight;
 					ctx.clearRect(0, 0, width, height);
 					ctx.filter = 'blur(34px)';
 
