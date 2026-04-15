@@ -19,6 +19,7 @@
 			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
 			rel="stylesheet"
 		/>
+		<script src="/smoke-animation.js"></script>
 		<style>
 			:root {
 				--bg: #120722;
@@ -53,6 +54,8 @@
 				line-height: 1.6;
 				min-height: 100vh;
 				overflow-x: hidden;
+				position: relative;
+				z-index: 1;
 			}
 
 			.container {
@@ -61,10 +64,28 @@
 				padding: 0 1.4rem;
 			}
 
+			/* Smoke Background */
+			.smoke-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+				z-index: 0;
+				pointer-events: none;
+				overflow: hidden;
+			}
+
+			.smoke-canvas {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
 			header {
 				position: sticky;
 				top: 0;
-				z-index: 20;
+				z-index: 25;
 				border-bottom: 1px solid rgba(255, 95, 166, 0.22);
 				background: rgba(8, 5, 12, 0.86);
 				backdrop-filter: blur(10px);
@@ -488,6 +509,8 @@
 
 			.hero {
 				padding: 5.2rem 0 3.4rem;
+				position: relative;
+				z-index: 2;
 			}
 
 			.kicker {
@@ -603,6 +626,7 @@
 				padding: 4.2rem 0;
 				position: relative;
 				overflow: hidden;
+				z-index: 2;
 			}
 
 			section::before {
@@ -1069,6 +1093,9 @@
 		</style>
 	</head>
 	<body>
+		<div class="smoke-container" id="smokeContainer">
+			<canvas class="smoke-canvas" id="smokeCanvas"></canvas>
+		</div>
 		<header>
 			<div class="container">
 				<nav>
@@ -1314,6 +1341,34 @@
 			window.addEventListener('scroll', () => {
 				menuToggle.classList.remove('active');
 				navLinks.classList.remove('active');
+			});
+
+			// Initialize Smoke Animation
+			document.addEventListener('DOMContentLoaded', () => {
+				const canvas = document.getElementById('smokeCanvas');
+				if (canvas && window.SmokeRenderer) {
+					const renderer = new window.SmokeRenderer(canvas, '#FF5FA6'); // Rosa/Pink
+					
+					let animationFrameId;
+					const loop = (now) => {
+						renderer.render(now);
+						animationFrameId = requestAnimationFrame(loop);
+					};
+					loop(0);
+
+					// Handle resize
+					const handleResize = () => {
+						renderer.updateScale();
+					};
+					window.addEventListener('resize', handleResize);
+
+					// Cleanup
+					window.addEventListener('beforeunload', () => {
+						cancelAnimationFrame(animationFrameId);
+						window.removeEventListener('resize', handleResize);
+						renderer.reset();
+					});
+				}
 			});
 		</script>
 	</body>
