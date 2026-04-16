@@ -22,11 +22,11 @@
 		<script src="/smoke-animation.js"></script>
 		<style>
 			:root {
-				--bg: #120722;
-				--bg-2: #251042;
-				--surface: #311653;
-				--surface-2: #3c1b61;
-				--border: #6f48a3;
+				--bg: #060608;
+				--bg-2: #0d0e12;
+				--surface: #13151b;
+				--surface-2: #1b1f27;
+				--border: #2e3440;
 				--text: #ffe7f6;
 				--muted: #ffffff;
 				--primary: #ff5fa6;
@@ -47,9 +47,9 @@
 			body {
 				font-family: "Inter", sans-serif;
 				background:
-					radial-gradient(circle at 82% 14%, rgba(255, 95, 166, 0.25), transparent 38%),
-					radial-gradient(circle at 12% 82%, rgba(255, 43, 144, 0.18), transparent 34%),
-					linear-gradient(145deg, #1a0415 0%, #280824 45%, #2a1850 100%);
+					radial-gradient(circle at 82% 14%, rgba(255, 95, 166, 0.08), transparent 34%),
+					radial-gradient(circle at 12% 82%, rgba(255, 43, 144, 0.06), transparent 30%),
+					linear-gradient(145deg, #050506 0%, #090a0d 50%, #0f1117 100%);
 				color: var(--text);
 				line-height: 1.6;
 				min-height: 100vh;
@@ -88,7 +88,7 @@
 				top: 0;
 				z-index: 25;
 				border-bottom: 1px solid rgba(255, 95, 166, 0.22);
-				background: rgba(8, 5, 12, 0.86);
+				background: rgba(6, 7, 10, 0.9);
 				backdrop-filter: blur(10px);
 			}
 
@@ -132,6 +132,28 @@
 
 			.nav-links a:hover {
 				color: var(--primary);
+			}
+
+			.nav-tokenomics {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.46rem 0.82rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 159, 207, 0.45);
+				background: linear-gradient(135deg, rgba(255, 43, 144, 0.26), rgba(255, 95, 166, 0.16));
+				box-shadow: 0 8px 22px rgba(255, 43, 144, 0.16);
+				color: #ffe6f4 !important;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+			}
+
+			.nav-tokenomics:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 12px 28px rgba(255, 43, 144, 0.24);
+				border-color: rgba(255, 159, 207, 0.7);
+				color: #fff1f9 !important;
 			}
 
 			.menu-toggle {
@@ -218,6 +240,13 @@
 					border-bottom: 1px solid rgba(255, 95, 166, 0.15);
 					font-size: 0.95rem;
 					display: block;
+				}
+
+				.nav-links .nav-tokenomics {
+					margin-top: 0.6rem;
+					padding: 0.72rem 0.9rem;
+					border-bottom: none;
+					text-align: center;
 				}
 
 				.nav-links a:last-child {
@@ -1108,6 +1137,7 @@
 						<a href="#risk">Business Risk</a>
 						<a href="#solution">Resilience Layer</a>
 						<a href="#architecture">On Chain Architecture</a>
+						<a href="/tokenomics.html" class="nav-tokenomics">Tokenomics v2.1</a>
 					</div>
 					<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
 						<span></span>
@@ -1348,7 +1378,7 @@
 			document.addEventListener('DOMContentLoaded', () => {
 				const canvas = document.getElementById('smokeCanvas');
 				if (canvas && window.SmokeRenderer) {
-					const renderer = new window.SmokeRenderer(canvas, '#FF5FA6'); // Rosa/Pink
+					const renderer = new window.SmokeRenderer(canvas, '#0A0B0D'); // Base negra
 					
 					let animationFrameId;
 					const loop = (now) => {

@@ -43,7 +43,7 @@ void main(){gl_Position=position;}`;
 
 // Renderer Class
 class SmokeRenderer {
-  constructor(canvas, colorHex = '#FF5FA6') {
+  constructor(canvas, colorHex = '#0A0B0D') {
     this.canvas = canvas;
     this.gl = canvas.getContext('webgl2');
     if (!this.gl) {
@@ -69,7 +69,7 @@ class SmokeRenderer {
           parseInt(result[2], 16) / 255,
           parseInt(result[3], 16) / 255,
         ]
-      : [1, 0.37, 0.65]; // Default to pink
+        : [0.04, 0.05, 0.07]; // Default to near-black
   }
   
   updateColor(colorHex) {

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>EtherVap Tokenomics v2.1</title>
+		<meta
+			name="description"
+			content="Tokenomics oficial de EtherVap v2.1: modelo económico, distribución, treasury, riesgos, gobernanza y roadmap."
+		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg: #050608;
+				--bg-2: #0c0f14;
+				--panel: #121722;
+				--panel-2: #171d2a;
+				--border: #2e3440;
+				--text: #f8f2f7;
+				--muted: #d9dce3;
+				--pink: #ff5fa6;
+				--pink-strong: #ff2b90;
+				--pink-soft: #ffb7da;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: "Inter", sans-serif;
+				background:
+					radial-gradient(circle at 80% 0%, rgba(255, 95, 166, 0.09), transparent 34%),
+					radial-gradient(circle at 0% 100%, rgba(255, 43, 144, 0.07), transparent 30%),
+					linear-gradient(145deg, var(--bg) 0%, var(--bg-2) 55%, #10141d 100%);
+				color: var(--text);
+				line-height: 1.65;
+				min-height: 100vh;
+			}
+
+			.container {
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 1.2rem 1rem 3rem;
+			}
+
+			header {
+				position: sticky;
+				top: 0;
+				z-index: 20;
+				background: rgba(8, 10, 14, 0.92);
+				border-bottom: 1px solid rgba(255, 95, 166, 0.28);
+				backdrop-filter: blur(12px);
+			}
+
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+				max-width: 1080px;
+				margin: 0 auto;
+				padding: 0.8rem 1rem;
+			}
+
+			.brand {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.55rem;
+				font-family: "Space Grotesk", sans-serif;
+				font-weight: 700;
+				font-size: 1rem;
+				color: var(--text);
+				text-decoration: none;
+			}
+
+			.brand img {
+				height: 42px;
+				width: auto;
+			}
+
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.46rem 0.84rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 159, 207, 0.45);
+				background: linear-gradient(135deg, rgba(255, 43, 144, 0.24), rgba(255, 95, 166, 0.16));
+				box-shadow: 0 8px 22px rgba(255, 43, 144, 0.15);
+				color: #ffeaf7;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.9rem;
+			}
+
+			.hero {
+				padding: 2.2rem 0 1.4rem;
+			}
+
+			.kicker {
+				display: inline-flex;
+				align-items: center;
+				padding: 0.38rem 0.7rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255, 95, 166, 0.34);
+				background: rgba(255, 95, 166, 0.12);
+				color: var(--pink-soft);
+				font-size: 0.74rem;
+				font-weight: 600;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+			}
+
+			h1 {
+				margin-top: 0.9rem;
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(1.9rem, 5vw, 3rem);
+				line-height: 1.06;
+			}
+
+			.subtitle {
+				margin-top: 0.8rem;
+				color: var(--muted);
+				max-width: 860px;
+			}
+
+			.section-card {
+				background: linear-gradient(160deg, rgba(20, 25, 35, 0.9), rgba(14, 17, 25, 0.95));
+				border: 1px solid rgba(255, 95, 166, 0.18);
+				border-radius: 1rem;
+				padding: 1.1rem;
+				margin-top: 0.9rem;
+			}
+
+			h2 {
+				font-family: "Space Grotesk", sans-serif;
+				font-size: clamp(1.15rem, 3vw, 1.55rem);
+				margin-bottom: 0.68rem;
+			}
+
+			p,
+			li {
+				font-size: 0.97rem;
+			}
+
+			ul {
+				padding-left: 1.2rem;
+				display: grid;
+				gap: 0.35rem;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 0.65rem;
+				font-size: 0.94rem;
+			}
+
+			th,
+			td {
+				border: 1px solid rgba(255, 95, 166, 0.2);
+				padding: 0.56rem;
+				text-align: left;
+			}
+
+			th {
+				background: rgba(255, 95, 166, 0.12);
+				color: #ffd9ed;
+				font-weight: 600;
+			}
+
+			pre {
+				background: rgba(8, 10, 16, 0.85);
+				border: 1px solid rgba(255, 95, 166, 0.2);
+				border-radius: 0.8rem;
+				padding: 0.84rem;
+				overflow-x: auto;
+				font-size: 0.9rem;
+				line-height: 1.52;
+			}
+
+			.notice {
+				margin-top: 1.1rem;
+				padding: 0.95rem;
+				border-radius: 0.9rem;
+				border: 1px solid rgba(255, 95, 166, 0.36);
+				background: linear-gradient(140deg, rgba(255, 43, 144, 0.16), rgba(255, 95, 166, 0.08));
+				color: #ffe6f3;
+			}
+
+			.sections {
+				display: grid;
+				gap: 0.86rem;
+			}
+
+			@media (max-width: 720px) {
+				.container {
+					padding: 1rem 0.8rem 2rem;
+				}
+
+				.nav {
+					padding: 0.7rem 0.8rem;
+				}
+
+				.brand img {
+					height: 34px;
+				}
+
+				table,
+				th,
+				td {
+					font-size: 0.86rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="nav">
+				<a href="/" class="brand">
+					<img src="/EtherVault_01.png" alt="EtherVap" />
+					<span>EtherVap</span>
+				</a>
+				<a class="back-link" href="/">Volver al Landing</a>
+			</div>
+		</header>
+
+		<main class="container">
+			<section class="hero">
+				<span class="kicker">Documento Oficial</span>
+				<h1>Tokenomics EtherVap v2.1 (Final Production)</h1>
+				<p class="subtitle">
+					Modelo económico orientado a continuidad de IA empresarial, con treasury activo y pricing
+					flexible por Compute Unit.
+				</p>
+			</section>
+
+			<section class="sections">
+				<article class="section-card">
+					<h2>Resumen Ejecutivo</h2>
+					<p>
+						EtherVap (eVAP) tokeniza derechos a Compute Units (CU) de inferencia IA precomprados
+						a descuento bulk. Treasury actua como market maker profesional, absorbiendo volatilidad.
+						Unidad flexible evita rigidez modelos.
+					</p>
+					<p>1 eVAP = 1 Compute Unit (CU)</p>
+					<p>1 CU = $0.105 worth de inferencia (internal accounting, multi-modelo)</p>
+				</article>
+
+				<article class="section-card">
+					<h2>1. Token eVAP</h2>
+					<ul>
+						<li>Estandar: ERC20 (Base chain)</li>
+						<li>Utility: Quemar por inferencia real X402</li>
+						<li>Precio: Mercado Uniswap v4</li>
+						<li>Supply inicial: 10M eVAP</li>
+					</ul>
+				</article>
+
+				<article class="section-card">
+					<h2>2. Distribucion</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Categoria</th>
+								<th>%</th>
+								<th>Cantidad</th>
+								<th>Vesting</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Treasury</td><td>50%</td><td>5M</td><td>N/A</td></tr>
+							<tr><td>LP Uniswap</td><td>20%</td><td>2M</td><td>N/A</td></tr>
+							<tr><td>Team</td><td>15%</td><td>1.5M</td><td>36m linear</td></tr>
+							<tr><td>Grants</td><td>10%</td><td>1M</td><td>12m cliff</td></tr>
+							<tr><td>Early LPs</td><td>5%</td><td>0.5M</td><td>6m linear</td></tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article class="section-card">
+					<h2>3. Compute Unit (CU) Definition</h2>
+					<p>Flexible pricing interno:</p>
+					<p>1 CU = $0.105 inferencia efectiva</p>
+					<p>Routing inteligente:</p>
+					<ul>
+						<li>DeepSeek: 1.1M tokens -&gt; $0.095 costo</li>
+						<li>Claude: 800k tokens -&gt; $0.105 costo</li>
+						<li>GPT: 700k tokens -&gt; $0.105 costo</li>
+					</ul>
+					<p>Treasury controla mix para margen positivo.</p>
+				</article>
+
+				<article class="section-card">
+					<h2>4. Modelo Economico</h2>
+					<pre>COSTO bulk promedio: $0.095/CU
+VENTA: $0.105 eVAP (mercado)
+MARGEN BRUTO: $0.01 (9.5%)
+
+Cashback quemadores: 2.5% eVAP ($0.0026) -&gt; Neto usuario: $0.1024
+
+USUARIO: Quema 1 eVAP ($0.105) -&gt; 0.025 eVAP back
+NETO: $0.1024 vs $0.105 spot -&gt; Competitivo
+PROTOCOLO: $0.01 margen (95.2% covered post-rewards)</pre>
+				</article>
+
+				<article class="section-card">
+					<h2>5. Treasury: Market Maker Profesional</h2>
+					<p>Hard Collateral (80% minimo):</p>
+					<ul>
+						<li>USDC cash: 120% coverage</li>
+						<li>Compute credits: 30% coverage (valuados mark-to-market proveedores)</li>
+					</ul>
+					<p>Soft Assets:</p>
+					<ul>
+						<li>Locked bulk contracts (DeepSeek/Novita anuales)</li>
+						<li>Yield farming USDC (5-8% Aave)</li>
+					</ul>
+					<p>Limites:</p>
+					<ul>
+						<li>Buffer &lt;60%: Pricing dinamico (+2%)</li>
+						<li>Buffer &lt;40%: Pausa mints</li>
+					</ul>
+				</article>
+
+				<article class="section-card">
+					<h2>6. Revenue Streams</h2>
+					<pre>Por 1M CU ($105k):
+├── $105k Usuarios (eVAP)
+├── -$95k Proveedores bulk
+├── +$10.5k Margen (10%)
+├── +$2.1k Fees Uniswap (2%)
+└── +$5.25k OpenRouter split (5%)
+TOTAL TREASURY: $17.85k
+REWARDS: $2.63k (15% margen)</pre>
+				</article>
+
+				<article class="section-card">
+					<h2>7. Uniswap v4 Hooks</h2>
+					<ul>
+						<li>Dynamic fees: 0.05-1.2% (profundidad LP)</li>
+						<li>Fee capture: 100% treasury</li>
+						<li>LP rewards: 6 meses early providers</li>
+					</ul>
+				</article>
+
+				<article class="section-card">
+					<h2>8. Proyecciones</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Mes</th>
+								<th>TVL</th>
+								<th>CU Vendidos</th>
+								<th>Revenue</th>
+								<th>Margen Neto</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>1</td><td>$250k</td><td>25k</td><td>$2.6k</td><td>$1.3k</td></tr>
+							<tr><td>6</td><td>$2.5M</td><td>250k</td><td>$26k</td><td>$13k</td></tr>
+							<tr><td>12</td><td>$10M</td><td>1M</td><td>$105k</td><td>$52k</td></tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article class="section-card">
+					<h2>9. Riesgos Mitigados</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Riesgo</th>
+								<th>Mitigacion</th>
+								<th>Residual</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Mix modelos caro</td><td>CU flexible + routing</td><td>Bajo</td></tr>
+							<tr><td>Margen insuficiente</td><td>10% buffer + pricing dinamico</td><td>Bajo</td></tr>
+							<tr><td>Proveedor default</td><td>5 proveedores + anual contracts</td><td>Bajo</td></tr>
+							<tr><td>Adopcion</td><td>OpenRouter + grants LatAm</td><td>Medio</td></tr>
+							<tr><td>Treasury drain</td><td>120% hard collateral</td><td>Bajo</td></tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article class="section-card">
+					<h2>10. Token Warrants (Seed)</h2>
+					<ul>
+						<li>ERC-721, strike $0.075 eVAP (2027)</li>
+						<li>Vesting 24m linear, max 12% dilucion</li>
+						<li>Backing: USDC treasury (130% collateral)</li>
+					</ul>
+				</article>
+
+				<article class="section-card">
+					<h2>11. Gobernanza</h2>
+					<ul>
+						<li>Fase 1: Multisig 7/12</li>
+						<li>Fase 2 (&gt;10M TVL): eVAP voting</li>
+						<li>Scope: Proveedores, fees, buffer params</li>
+					</ul>
+				</article>
+
+				<article class="section-card">
+					<h2>12. Roadmap</h2>
+					<ul>
+						<li>Q2 2026: Testnet + OpenRouter MVP</li>
+						<li>Q3 2026: Mainnet + Warrants $2M raise</li>
+						<li>Q4 2026: B2B dashboard + multi-chain</li>
+						<li>2027: Perpetual market + governance</li>
+					</ul>
+				</article>
+			</section>
+
+			<p class="notice">
+				<strong>Legal:</strong> Utility token. Auditorias independientes requeridas. No consejo financiero.
+			</p>
+			<p style="margin-top: 0.8rem; color: #cfd3dc">Documento oficial v2.1 - Production Ready</p>
+		</main>
+	</body>
+</html>
