@@ -160,7 +160,7 @@ export function BeamsBackground({
       )}
       style={{
         background:
-          "radial-gradient(circle at 82% 14%, rgba(255, 95, 166, 0.11), transparent 36%), radial-gradient(circle at 12% 82%, rgba(255, 43, 144, 0.08), transparent 32%), linear-gradient(145deg, #060608 0%, #0b0c10 50%, #12141c 100%)",
+          "radial-gradient(circle at 82% 14%, rgba(80, 80, 80, 0.06), transparent 36%), radial-gradient(circle at 12% 82%, rgba(60, 60, 60, 0.04), transparent 32%), linear-gradient(145deg, #060608 0%, #0b0c10 50%, #12141c 100%)",
       }}
     >
       <canvas
@@ -181,7 +181,7 @@ export function BeamsBackground({
         }}
         style={{
           background:
-            "radial-gradient(circle at 50% 10%, rgba(255, 95, 166, 0.1), transparent 50%)",
+            "radial-gradient(circle at 50% 10%, rgba(70, 70, 70, 0.05), transparent 50%)",
           backdropFilter: "blur(50px)",
         }}
       />
