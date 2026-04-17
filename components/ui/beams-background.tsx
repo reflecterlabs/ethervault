@@ -36,8 +36,8 @@ function createBeam(width: number, height: number): Beam {
     angle,
     speed: 0.55 + Math.random() * 1.05,
     opacity: 0.14 + Math.random() * 0.18,
-    // Hero palette: violet to pink range.
-    hue: 268 + Math.random() * 62,
+    // Hero palette: pink range.
+    hue: 324 + Math.random() * 22,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.018 + Math.random() * 0.028,
   };
@@ -97,7 +97,7 @@ export function BeamsBackground({
       beam.x = column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
       beam.width = 96 + Math.random() * 96;
       beam.speed = 0.45 + Math.random() * 0.38;
-      beam.hue = 268 + (index * 62) / totalBeams;
+      beam.hue = 324 + (index * 22) / totalBeams;
       beam.opacity = 0.2 + Math.random() * 0.1;
       return beam;
     }
